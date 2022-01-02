@@ -42,11 +42,24 @@ var needScript = function(file, callback) {
 	}
 }
 var loadScript = function(file, callback) {
-	let script = document.createElement('script');
-	script.setAttribute('type', 'text/javascript');
-	script.setAttribute('src', file);
-	script.addEventListener('load', () => {callback();}, false);
-	document.body.appendChild(script);
+	// If background page (manifest v2)
+	if (typeof document != 'undefined') {
+		let script = document.createElement('script');
+		script.setAttribute('type', 'text/javascript');
+		script.setAttribute('src', file);
+		script.addEventListener('load', () => {callback();}, false);
+		document.body.appendChild(script);
+	}
+	// If service worker (manifest v3)
+	else {
+		try {
+			//importScripts('background.recipes.js');
+			importScripts(Browser.runtime.getURL('/') + file);
+			callback();
+		} catch (e) {
+			console.error(e);
+		}
+	}
 }
 
 
