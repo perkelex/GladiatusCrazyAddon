@@ -16,7 +16,6 @@
 	"content_scripts": [
 		{
 			"matches": [
-				"http://*.gladiatus.gameforge.com/game/index.php*",
 				"https://*.gladiatus.gameforge.com/game/index.php*"
 			],
 			"js": [
@@ -32,10 +31,7 @@
 	],
 
 	"background": {
-		"scripts": [
-			"core/background.js"
-		],
-		"persistent": false
+		"service_worker": "core/background.js"
 	},
 	"externally_connectable": {
 		"matches": [
@@ -45,9 +41,17 @@
 	},
 
 	"web_accessible_resources": [
-		"core/locale/*",
-		"core/resources/*",
-		"core/source/*"
+		{
+			"resources": [
+				"core/locale/*",
+				"core/resources/*",
+				"core/source/*",
+				"core/background.recipes.js"
+			],
+			"matches": [
+				"https://*.gladiatus.gameforge.com/*"
+			]
+		}
 	],
-	"manifest_version": 2
+	"manifest_version": 3
 }
