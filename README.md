@@ -20,6 +20,14 @@
 <img src="documentation/resources/preview-images/gca-preview-01.png" width="100%"/>
 
 
+## Manifest v3 Testing, Changes, Progress
+
+- [x] Manifest ported from v2 to v3
+- [x] Deprecated API calls changed (chrome.extension.getURL)
+- [ ] Check if the `chrome.runtime.getURL` is cross-browser compatible and since which version (we may can remove check for the deprecated one)
+- [x] Extension information are now passed to content scripts through script attrubutes (fixes CSP)
+- [x] Background page now can be loaded as service worker
+- [ ] Background service worker fails to load external scripts (tooltip materials info don't work)
 
 
 ## :paperclip: Downloads
