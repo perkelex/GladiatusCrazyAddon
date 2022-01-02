@@ -33,6 +33,39 @@ var inject = function(_info, _window, _folder){
 	// Locale Load
 	locale.preload();
 
+	// Load info script (dependancy)
+	var script = info.data.document.createElement('script');
+	script.setAttribute('type', 'text/javascript');
+	script.setAttribute('src',  info.data.folder + '/' + 'source/gca.info.js' + '?' + info.addon.version + '&built=' + (new Date()).getTime());
+	script.setAttribute('extension-resources',  JSON.stringify({
+		folder : _folder + '/resources/',
+		audio : _folder + '/resources/audio/'
+	}));
+	script.setAttribute('extension-id',  JSON.stringify({
+		id : _info.extension
+	}));
+	script.addEventListener('load', () => {
+		
+		// Data - Options
+		tools.preloadScript('source/gca.data.js');
+		tools.preloadScript('source/gca.data.recipes.js');
+		// Functions
+		let toolsScript = tools.preloadScript('source/gca.tools.js');
+		// Audio
+		tools.preloadScript('source/gca.audio.js');
+		// Notifications
+		tools.preloadScript('source/gca.notifications.js');
+		// Build
+		tools.preloadScript('source/gca.build.js');
+
+		// Manager Load
+		manager.load();
+		manager.tools(toolsScript);
+
+	}, false);
+	info.data.document.head.appendChild(script);
+
+	/*
 	// Resources Load
 	tools.loadCode(
 		'\n' +
@@ -64,6 +97,7 @@ var inject = function(_info, _window, _folder){
 	manager.tools(toolsScript);
 
 	return;
+	*/
 };
 
 var tools = {

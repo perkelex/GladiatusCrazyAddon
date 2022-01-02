@@ -16,6 +16,9 @@ var gca = {
 	homepage : "https://gladiatus.dinodevs.com"
 };
 
+var gca_resources = JSON.parse(document.currentScript.getAttribute('extension-resources'));
+var gca_extension = JSON.parse(document.currentScript.getAttribute('extension-id'));
+
 // Page info
 var gca_section = {
 	// Resolve Document Url
