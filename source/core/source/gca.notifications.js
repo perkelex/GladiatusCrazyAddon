@@ -51,7 +51,7 @@ var gca_notifications = {
 			if (!display) return;
 			display = false;
 			gca_notifications.fadeOut(element);
-		}, 6000);
+		}, 2000);
 
 		element.addEventListener('click', function(){
 			if (!display) return;

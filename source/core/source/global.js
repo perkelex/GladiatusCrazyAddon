@@ -21,14 +21,14 @@ var gca_global = {
 
 		// Gladiatus site fixes & improvements
 		if (gca_options.bool("global", "gladiatus_site_fixes"))
-			document.documentElement.className += " glfix";	
+			document.documentElement.className += " glfix";
 		// Custom page scrollbar
 		if (gca_options.bool("global","gca_custom_scrollbar"))
-			document.documentElement.className += " gca_custom_scrollbar";		
+			document.documentElement.className += " gca_custom_scrollbar";
 		// Lock all sections
 		if (gca_options.bool("global","lock_section_visibility"))
 			document.documentElement.className += " lock_section_visibility";
-		
+
 		// Hide expedition button
 		if (gca_options.bool("global","bar_hide_exp_btn"))
 			document.documentElement.className += " bar_hide_exp_btn";
@@ -41,11 +41,11 @@ var gca_global = {
 		// Hide circus button
 		if (gca_options.bool("global","bar_hide_ct_btn"))
 			document.documentElement.className += " bar_hide_ct_btn";
-		
+
 		// Hide City Gate menu entry
 		if (gca_options.bool("main_menu","menu_hide_citygate"))
 			document.documentElement.className += " menu_hide_citygate";
-		
+
 		// Merge menu merchants into one
 		if (gca_options.bool("main_menu","menu_merge_merchants"))
 			document.documentElement.className += " menu_merge_merchants";
@@ -54,13 +54,13 @@ var gca_global = {
 			document.documentElement.className += " menu_merge_items";
 
 		// Resolve Game Modes
-		this.gameModePreResolve();		
+		this.gameModePreResolve();
 
 		// If Event bar was active
 		(gca_data.section.get("cache", "event_bar_active", 0) && (gca_options.bool("global","shortcuts_bar") || gca_options.bool("global","auction_status_bar") || gca_options.bool("global","extended_hp_xp_info")) &&
 			this.display.event_bar_move.preload());
 		// If submenu click to change
-		(gca_options.bool("main_menu","submenu_click_to_change") && 
+		(gca_options.bool("main_menu","submenu_click_to_change") &&
 			this.display.advanced_main_menu.submenuClickToChangeTab.preload());
 		// Hide flags
 		(gca_options.bool("global","hide_language_flags") &&
@@ -71,15 +71,15 @@ var gca_global = {
 			document.documentElement.classList.add("gca_rtl");
 		}
 		// If x-scroll
-		(gca_options.bool("global","x_scroll") && 
+		(gca_options.bool("global","x_scroll") &&
 			this.display.xScrollFix());
 		// If Item shadow
-		(gca_options.bool("global","item_shadow") && 
+		(gca_options.bool("global","item_shadow") &&
 			this.display.analyzeItems.itemShadow.preload());
 		// If Inventory options group
 		(gca_options.bool("global","inventory_options_group") &&
 			this.display.inventoryOptionsGroup.preload());
-		
+
 		// Accessibility
 		(gca_options.bool("accessibility","white_level_indicators") &&
 			document.documentElement.classList.add("accessibility-white-level-indicators"));
@@ -130,7 +130,7 @@ var gca_global = {
 		if (!this.isLoggedIn) {
 			return;
 		}
-		
+
 		// Image Cache
 		//this.background.preserve_image_cache.load();
 
@@ -141,18 +141,18 @@ var gca_global = {
 			this.display.extended_hp_xp.life_potion_shortcut.create(false);
 
 		// Minutes left for full life
-		(gca_options.bool("global","hp_timer_for_full_life") && 
+		(gca_options.bool("global","hp_timer_for_full_life") &&
 			this.display.extended_hp_xp.timerForFullLife());
 		// Show Expedition Recover
-		(!this.isInUnderworld && gca_options.bool("global","expedition_dungeon_points_recover_timer") && 
+		(!this.isInUnderworld && gca_options.bool("global","expedition_dungeon_points_recover_timer") &&
 			this.display.showPointsRecover.init());
-		
+
 		// Buttons' main bar
 		(gca_options.bool("global","shortcuts_bar") &&
 			this.display.shortcuts_bar.create());
 
 		// Display auction status
-		(!this.isTraveling && 
+		(!this.isTraveling &&
 			this.display.auction_status_bar.create());
 
 		// Event bar move
@@ -160,23 +160,23 @@ var gca_global = {
 			this.display.event_bar_move.load());
 
 		// Integrate top fixed bar
-		(gca_options.bool("global","top_fixed_bar") && 
+		(gca_options.bool("global","top_fixed_bar") &&
 			this.display.top_fixed_bar.create());
 
 		// Advance main menu
-		(gca_options.bool("main_menu","advance_main_menu") && 
+		(gca_options.bool("main_menu","advance_main_menu") &&
 			this.display.advanced_main_menu.create());
-		
+
 		// Advance main menu - submenu click to change
-		(gca_options.bool("main_menu","submenu_click_to_change") && 
+		(gca_options.bool("main_menu","submenu_click_to_change") &&
 			this.display.advanced_main_menu.submenuClickToChangeTab.apply());
-		
+
 		// Make traveling display fixes
 		(this.isTraveling &&
 			this.display.traveling_style_fixes());
-		
+
 		// Bind auction last search
-		(!this.isTraveling && gca_options.bool("auction","save_last_state") && 
+		(!this.isTraveling && gca_options.bool("auction","save_last_state") &&
 			this.display.auctionLoadLastState());
 
 		// Attacked Timers
@@ -194,9 +194,9 @@ var gca_global = {
 		// Global Arena Timer
 		(gca_options.bool("global","global_arena_timer") &&
 			this.display.global_arena.inject());
-			
+
 		// Welcome message
-		this.welcomeMessage.inject();	
+		this.welcomeMessage.inject();
 
 		// Inventory options group
 		(gca_options.bool("global","inventory_options_group") &&
@@ -206,7 +206,7 @@ var gca_global = {
 			this.display.inventoryInfo.prepare());
 
 		// Daily Bonus Log
-		(gca_options.bool("overview", "daily_bonus_log") && 
+		(gca_options.bool("overview", "daily_bonus_log") &&
 			this.background.daily_bonus_log.inject());
 
 		// If Item shadow
@@ -224,28 +224,28 @@ var gca_global = {
 			this.display.event.server_quest_timer.inject());
 
 		// Remember merchants' and inventory tabs
-		(!this.isTraveling && (gca_options.bool("global","remember_tabs") || gca_options.bool("market","remember_sort")) && 
+		(!this.isTraveling && (gca_options.bool("global","remember_tabs") || gca_options.bool("market","remember_sort")) &&
 			this.background.targetLinkEditor.init());
 
 		// Cooldown Sound Notification for missions, dungeons and arenas
-		(!this.isTraveling && gca_options.bool("sound","cooldown_sound_notifications") && 
+		(!this.isTraveling && gca_options.bool("sound","cooldown_sound_notifications") &&
 			this.background.notify_me.cooldown_sounds.init());
 
 
 		// Notification : Guild application alert
-		(!this.isTraveling && gca_options.bool("global","notify_new_guild_application") && 
+		(!this.isTraveling && gca_options.bool("global","notify_new_guild_application") &&
 			this.background.notify_me.new_guild_application());
-		
+
 		// Notification : Guild attack ready alert
-		(!this.isTraveling && gca_options.bool("global","notify_guild_attack_ready") && 
+		(!this.isTraveling && gca_options.bool("global","notify_guild_attack_ready") &&
 			this.background.notify_me.guild_attack_ready());
-			
+
 		// Notification: Minimum health warning
 		((gca_options.get("global", "health_warning") > 0) &&
-			this.background.notify_me.healthWarning());	
+			this.background.notify_me.healthWarning());
 
 		// Get pinned guild message
-		(!this.isTraveling && gca_options.bool("global","check_guild_pinned_message") && 
+		(!this.isTraveling && gca_options.bool("global","check_guild_pinned_message") &&
 			this.background.guildPinnedMessage());
 
 		// Pray Buf shortcut
@@ -258,30 +258,30 @@ var gca_global = {
 		// Browser notifications
 		(gca_options.bool("global","browser_notifications") &&
 			gca_notifications._browser.init());
-		
+
 		// Gold/Exp data
 		(gca_options.bool("global","gold_exp_data") &&
 			this.background.gold_exp_data.inject());
-			
+
 		// Forge timer
 		(!this.isTraveling && gca_options.bool("main_menu","forge_timers") &&
 			this.display.forge_timer());
-		
+
 		// Centurion & PowerUps timers
 		(gca_options.bool("main_menu","centurio_powerups_timers") &&
 			this.centurio_days.init());
-		
+
 		// 24h guild info update
 		this.update_guild_info();
-		
+
 		// Show durability or notifications
 		((gca_options.get("global", "show_durability") != 0 || gca_options.get("global", "min_durability") > 0) && gca_section.mod!='auction' &&
-			this.display.analyzeItems.itemDurability.init());			
+			this.display.analyzeItems.itemDurability.init());
 
 		// Show forge info
-		(!this.isTraveling && gca_options.get("global", "show_forge_info") != 0 && 
+		(!this.isTraveling && gca_options.get("global", "show_forge_info") != 0 &&
 			this.display.analyzeItems.itemForgeInfo.init());
-		
+
 		// Edit Mercenaries tooltips
 		(gca_options.bool("global","show_mercenaries_real_name_and_combat_stats") &&
 			this.display.analyzeItems.mercenaries.init());
@@ -306,12 +306,12 @@ var gca_global = {
 		});
 
 		// Clean trash
-		this.maid.clean();
+		// this.maid.clean();
 
 		// INFO: Testing the error detection feature
 		// throw new Error('123');
 	},
-	
+
 	scripts : {
 		chartScript : {
 			load : 0, // 2 = ready
@@ -396,7 +396,7 @@ var gca_global = {
 
 	// Resolve page direction
 	pageDirectionResolve : function(){
-		
+
 		// fix crash from Dark Mode addon (the insert a couple of <link> elements with no href before the gladiatus css files)
 		let s = 0; //skip counter
 		for (var i = 1; i < document.querySelectorAll('link').length - 1 ; i++) {
@@ -405,7 +405,7 @@ var gca_global = {
 			else
 				s++;
 		}
-		
+
 		// Check page direction ltr or rtl
 		if(
 			// Check if the rtl css exists on the page
@@ -430,7 +430,7 @@ var gca_global = {
 		localStorage.removeItem('gca_rtl');
 		return;
 		*/
-	
+
 		// Else its a right to left server
 		window.gca_rtl = true;
 		document.documentElement.classList.add("gca_rtl");
@@ -439,7 +439,7 @@ var gca_global = {
 		if (!localStorage.getItem('gca_rtl'))
 			localStorage.setItem('gca_rtl', 'true');
 	},
-	
+
 	//Welcome message, runs only once
 	welcomeMessage: {
 	    inject: function (){
@@ -486,7 +486,7 @@ var gca_global = {
 				this.reddit(gca_links);
 			}
 		},
-		
+
 		// Display the GCA version on the bottom of the page
 		version : function(wrapper){
 			// Create a gca link
@@ -494,13 +494,13 @@ var gca_global = {
 			link.href = gca.homepage;
 			link.setAttribute('target', '_blank');
 			link.textContent = gca.shortName + ' v' + gca.version;
-			
+
 			// Create a link seperator
 			wrapper.appendChild(document.createTextNode(' | '));
 			// Insert link
 			wrapper.appendChild(link);
 		},
-		
+
 		// Display the Reddit link on the bottom of the page
 		reddit : function(wrapper){
 			// Create a reddit link
@@ -508,18 +508,18 @@ var gca_global = {
 			link.href = gca_links.get('unofficial-reddit');
 			link.setAttribute('target', '_blank');
 			link.textContent = 'Unofficial Reddit';
-			
+
 			// Create a link separator
 			wrapper.appendChild(document.createTextNode(" | "));
 			// Insert link
 			wrapper.appendChild(link);
 		},
-		
+
 		// Traveling
 		traveling_style_fixes : function () {
 			let header = document.getElementById('header_game');
 			header.className += ' gca-traveling';
-			
+
 			// Disable Pantheon
 			if ( document.getElementsByClassName(" gca_advance_main_menu").length > 0 ){
 				let pantheon_menu_entry = document.getElementsByClassName("advanced_menu_entry")[1];
@@ -535,7 +535,7 @@ var gca_global = {
 			let recruitment_menu_entry = document.getElementsByClassName("menuitem")[4];
 			recruitment_menu_entry.style.filter = "grayscale(100%)";
 			recruitment_menu_entry.removeAttribute("href");
-			
+
 		},
 
 		// Points recover timers
@@ -547,14 +547,14 @@ var gca_global = {
 				// Show timers
 				this.showTimer('expedition', server_speed);
 				this.showTimer('dungeon', server_speed);
-				
+
 				// Show dungeon points if hidden (eg. when in Britannia)
 				this.showDungeon();
 			},
 			showDungeon : function(){
 				if(!document.getElementById("icon_dungeonpoints"))
 					return;
-				
+
 				if( document.getElementById("icon_dungeonpoints").parentNode.style.display == "none" ){
 					document.getElementById("icon_dungeonpoints").parentNode.style.display = "block";
 					document.getElementById("icon_dungeonpoints").parentNode.style.filter = "grayscale(100%)";
@@ -573,7 +573,7 @@ var gca_global = {
     			} catch (e) {
         		return; // Exit if tooltip is not found or cannot be parsed
     			}
-    
+
     			// Get recovery rate
     			let recover_rate = tooltip[0][1][0].match(/\d+/);
     			if (!recover_rate) return; // Exit if recovery rate is not found
@@ -584,7 +584,7 @@ var gca_global = {
     			let point_max_elem = document.getElementById(type + 'points_value_pointmax');
     			let point_elem = document.getElementById(type + 'points_value_point');
     			if (!point_max_elem || !point_elem) return; // Exit if point elements are not found
-    
+
     			let point_missing = parseInt(point_max_elem.innerText, 10) - parseInt(point_elem.innerText, 10);
     			if (isNaN(point_missing) || point_missing === 0) return; // Exit if point calculation is invalid or nothing to do
 
@@ -619,7 +619,7 @@ var gca_global = {
     				gca_tools.setTooltip(icon, JSON.stringify(tooltip));
 		}
 	},
-		
+
 		// Extended Health and Experience bars
 		extended_hp_xp : {
 			// Display More info
@@ -636,7 +636,7 @@ var gca_global = {
 				var div = document.createElement('div');
 				div.id = "header_values_hp_xp_background";
 				document.getElementById('header_game').appendChild(div);
-				
+
 				// Insert HP info
 				div = document.createElement('div');
 				div.id = "header_values_hp_points";
@@ -646,7 +646,7 @@ var gca_global = {
 				text = document.createTextNode(" / " + gca_tools.strings.insertDots(hp[2]));
 				div.appendChild(text);
 				document.getElementById('header_values_hp').appendChild(div);
-				
+
 				// Insert XP info
 				div = document.createElement('div');
 				div.id = "header_values_xp_points";
@@ -658,7 +658,7 @@ var gca_global = {
 				document.getElementById('header_values_xp').appendChild(div);
 
 				// Display Healing Pot
-				(gca_options.bool("global","extended_hp_xp_info_potion") && 
+				(gca_options.bool("global","extended_hp_xp_info_potion") &&
 					this.life_potion_shortcut.create(this));
 			},
 
@@ -673,13 +673,13 @@ var gca_global = {
 					var link = document.createElement('a');
 					link.id = extended_hp_xp ? 'header_life_pot' : 'header_life_pot_only';
 					link.dataset.tooltip = JSON.stringify([[['<img style="width:20px;" align="absmiddle" src="' + gca_tools.img.cdn('img/premium/token/18.jpg') + '"> ' + gca_locale.get("global", "life_potion_use"),"#fdfdfd"]]]);
-					
+
 					// On click callback
 					link.addEventListener('click', () => {
 						// try to use a Healing Pot
 						this.tryToUsePotion();
 					}, false);
-					
+
 					// Insert button on page
 					if (extended_hp_xp) {
 						document.getElementById('header_values_hp').appendChild(link);
@@ -839,11 +839,11 @@ var gca_global = {
 				var minutes_left = Math.ceil(((parseInt(hp[2], 10) - parseInt(hp[1], 10)) * 60) / restore);
 				// Return if 0 minutes
 				if(minutes_left <= 0) return;
-				
+
 				// Convert minutes to hours 00:00
 				var hours_left = Math.floor(minutes_left / 60);
 				minutes_left = minutes_left % 60;
-				
+
 				var hours_left_text = (hours_left == 0) ? '' : hours_left + " " + gca_locale.get("general", "hours");
 				// Add data on the tooltip
 				lifeTooltip[0].push([[gca_locale.get("global", "life_recover_full") + " " + hours_left_text + " " + minutes_left + " " + gca_locale.get("general", "minutes")], ["#BA9700","#BA9700"]]);
@@ -991,7 +991,7 @@ var gca_global = {
 							temp.id = "qgm_exclude_me";
 							temp.textContent = gca_locale.get("global", "message_exclude_me");
 							div.appendChild(temp);
-							
+
 							instant_message_div.appendChild(div);
 						}
 
@@ -1016,7 +1016,7 @@ var gca_global = {
 								jQuery(instant_message_div).stop().fadeOut("fast");
 						}, false);
 					}
-					
+
 					// Links not During traveling
 					if( !gca_global.isTraveling ){
 
@@ -1031,7 +1031,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's market
 						if(activeButtons.indexOf("gmr") >= 0){
 							button = document.createElement('div');
@@ -1043,7 +1043,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's storage
 						if(activeButtons.indexOf("gst") >= 0){
 							let tab = gca_data.section.get("cache", "guild_storage_tab", 1);
@@ -1057,7 +1057,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's bank
 						if(activeButtons.indexOf("gbn") >= 0){
 							let instant_donate_gold = document.createElement('div');
@@ -1093,7 +1093,7 @@ var gca_global = {
 								jQuery(instant_donate_gold).stop().fadeOut("fast");
 							}, false);
 						}
-						
+
 						// Create a Link to guild's baths vox 1
 						if(activeButtons.indexOf("gbt") >= 0){
 							button = document.createElement('div');
@@ -1117,7 +1117,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's arena battle reports
 						if(activeButtons.indexOf("gar") >= 0){
 							button = document.createElement('div');
@@ -1129,7 +1129,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's jail
 						if(activeButtons.indexOf("gjl") >= 0){
 							button = document.createElement('div');
@@ -1141,7 +1141,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's library
 						if(activeButtons.indexOf("glb") >= 0){
 							button = document.createElement('div');
@@ -1153,7 +1153,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to guild's templum
 						if(activeButtons.indexOf("gtm") >= 0){
 							button = document.createElement('div');
@@ -1165,7 +1165,7 @@ var gca_global = {
 							button.appendChild(link);
 							shortcutsBar.appendChild(button);
 						}
-						
+
 						// Create a Link to food auction
 						if(activeButtons.indexOf("fau") >= 0){
 							button = document.createElement('div');
@@ -1193,14 +1193,14 @@ var gca_global = {
 					button.appendChild(link);
 					shortcutsBar.appendChild(button);
 				}
-				
+
 				// Display your player stats
 				if(activeButtons.indexOf("stt") >= 0){
 					let table_wrapper = document.createElement("div");
 					table_wrapper.className = "hover_box";
 					let statsHtmlTable = document.createElement("table");
 					statsHtmlTable.id = "gca_player_stats_table";
-					
+
 					// Add Canvas
 					var canvas = document.createElement('canvas');
 					canvas.id = "stats_canvas";
@@ -1225,7 +1225,7 @@ var gca_global = {
 					let spacer = document.createElement('div');
 					spacer.style.height = "26px";
 					table_wrapper.appendChild(spacer);
-					
+
 					// Shortcut button
 					button = document.createElement('div');
 					button.className = "icon-out";
@@ -1241,7 +1241,7 @@ var gca_global = {
 						jQuery(show_stats).fadeToggle();
 					}, false);
 				}
-				
+
 				// Display Online Players
 				if (activeButtons.indexOf("onl") >= 0) {
 					button = document.createElement('div');
@@ -1367,7 +1367,7 @@ var gca_global = {
 					jQuery.get(gca_getPage.link({"mod":"guild","submod":"memberList","order":"o"}), function(content){
 						// Match All active players
 						var online_players = content.match(/<tr>\s*<td>\s*<a href="index\.php\?mod=player&p=(\d+)&sh=[^"]+">([^<]+)<\/a>\s*<\/td>\s*<td>([^<]+)<\/td>\s*<td>(\d+)<\/td>\s*<td align="right">\s*[^<]*(<span[^>]*>[^<]*<\/span>|)\s*<\/td>\s*<td align="right"><span style="color: (green|#406000|#804000);[^"]*" title="[^"]*">([^<]*)</mg);
-						
+
 						// Check if you are on a guild
 						if(!online_players && content.match(/<form\s+action="index.php\?mod=guild&submod=create&sh=/i)){
 							// Save that you are not on guild
@@ -1381,7 +1381,7 @@ var gca_global = {
 						else{
 							let guild_players_data = content.match(/<tr>\s*<td>\s*<a href="index\.php\?mod=player&p=(\d+)&sh=[^"]+">([^<]+)<\/a>\s*<\/td>\s*<td>([^<]+)<\/td>\s*<td>(\d+)<\/td>\s*<td align="right">\s*[^<]*(<span[^>]*>[^<]*<\/span>|)\s*<\/td>\s*<td align="right"><span style="color:[^>]+>([^<]*)</mg);
 							let guild_players = [];
-						
+
 							// For each player
 							for (let i = 0; i < guild_players_data.length; i++){
 								// Match player's info
@@ -1403,7 +1403,7 @@ var gca_global = {
 								// Update guild data
 								gca_data.section.set("guild", "inGuild", true);
 								gca_data.section.set("guild", "mates", guild_players);
-								
+
 								let guild_name = content.match(/<h2 class="section-header">([^<]+)<\/h2>/)[1];
 								guild_name = guild_name.match(/([a-zA-Z0-9\-#@\[\]\.\+\:\*_]+) \[([^\]]+)\]/i)[1];
 								gca_data.section.set("guild", "name", guild_name);
@@ -1414,7 +1414,7 @@ var gca_global = {
 						if(!online_players){
 							online_players = [];
 						}
-						
+
 
 						// List with parsed players info
 						var player_list = [];
@@ -1490,7 +1490,7 @@ var gca_global = {
 							countElement.textContent = "(" + player_list.length + ")";
 						}
 					});
-					
+
 					// Get online family members
 					jQuery.get(gca_getPage.link({"mod":"overview","submod":"buddylist"}), function(content){
 						// Match All active players
@@ -1592,7 +1592,7 @@ var gca_global = {
 					var gold_txt = gca_tools.strings.trim(document.getElementById('sstat_gold_val').textContent);
 					// Parse gold in number
 					var gold = parseInt(gca_tools.strings.removeDots(gold_txt), 10);
-					
+
 					// If no gold or parse failed
 					if(gold == 0 || isNaN(gold)){
 						// Show warning
@@ -1696,7 +1696,7 @@ var gca_global = {
 							new_table.appendChild(tr);
 						}
 						statsHtmlTable.parentNode.replaceChild(new_table, statsHtmlTable);
-						
+
 						var chartFunction = function(){
 							new Chart(document.getElementById("stats_canvas"), {
 								type: 'radar',
@@ -1724,7 +1724,7 @@ var gca_global = {
 								}
 							});
 						}
-						
+
 						gca_global.scripts.chartScript.create(chartFunction);
 					}
 					// Stats not saved
@@ -1786,7 +1786,7 @@ var gca_global = {
 							// Show stats
 							self.create();
 						}
-						
+
 						else{
 							// Error
 							statsHtmlTable = document.getElementById("gca_player_stats_table");
@@ -1826,7 +1826,7 @@ var gca_global = {
 							if(statNamesA.length < 8 || statNamesB.length < 4 || !stats.strength || !stats.dexterity || !stats.agility || !stats.constitution || !stats.charisma || !stats.intelligence || !stats.armour || !stats.damage){
 								if(callback) callback(false);
 							}
-							
+
 							stats.strengthName = statNamesA[2].match(/>([^<]+)</i)[1];
 							stats.dexterityName = statNamesA[3].match(/>([^<]+)</i)[1];
 							stats.agilityName = statNamesA[4].match(/>([^<]+)</i)[1];
@@ -1900,7 +1900,7 @@ var gca_global = {
 					statusDiv.appendChild(table);
 					document.getElementById("header_game").appendChild(statusDiv);
 				}
-				
+
 				if(gca_options.bool("global","auction_status_bar") || gca_options.bool("global","auction_status_notification")){
 					this.getStatus();
 				}
@@ -2021,7 +2021,7 @@ var gca_global = {
 		        }
 		    }
 		},
-		
+
 		// Implement a top fixed bar to show important info on scroll
 		top_fixed_bar : {
 			// Elements to be moved to the top bar
@@ -2054,7 +2054,7 @@ var gca_global = {
 				link.textContent = 'Gladiatus Crazy Addon v' + gca.version;
 				div.appendChild(link);
 				document.body.appendChild(div);
-				
+
 				// Set up scroll to top button
 				var scroll_top = document.createElement('a');
 				scroll_top.className = 'scroll-to-top';
@@ -2064,7 +2064,7 @@ var gca_global = {
 				});
 				scroll_top.textContent = ' ▲ ';
 				div.appendChild(scroll_top);
-				
+
 				// Set up scroll to bottom button
 				var bar = document.getElementById("mmonetbar");
 				var scroll_bottom = document.createElement('a');
@@ -2074,7 +2074,7 @@ var gca_global = {
 					jQuery('html, body').scrollTop(jQuery("#footer_background").offset().top);
 				});
 				bar.appendChild(scroll_bottom);
-				
+
 				// Bind document elements
 				this.elements.bar.dom = document.getElementById('topFixedBar');
 				this.elements.icon_gold.dom = document.getElementById('icon_gold');
@@ -2092,7 +2092,7 @@ var gca_global = {
 				this.elements.header_values_hp.dom = document.getElementById('header_values_hp');
 				this.elements.show_premium_days.dom = document.getElementById('show_premium_days');
 				this.elements.header_menu.dom = document.getElementById('header_menue');
-				
+
 				// Attack a scroll event
 				window.addEventListener("scroll", () => {
 					this.onscroll();
@@ -2157,7 +2157,7 @@ var gca_global = {
 				// Pantheon Link
 				this.info.pantheon = main_links[1];
 				this.info.pantheon_active = (this.info.pantheon.className.match('active')) ? '_active' : '';
-				
+
 				// Guild Link
 				this.info.guild = main_links[2];
 				this.info.guild_active = (this.info.guild.className.match('active')) ? '_active' : '';
@@ -2182,7 +2182,7 @@ var gca_global = {
 						market : {active : false},
 						cityGate : {active : false}
 					};
-					
+
 					// Resolve links
 					for(let i = 0; i < sub_links.length; i++){
 						if(!this.info.sublink.work.active && sub_links[i].href.match(/index.php\?mod=work(&|&amp;)sh=/i)){
@@ -2302,7 +2302,7 @@ var gca_global = {
 
 				// Inject Guild Highscore Link
 				this.convertMenu.addPlus(this.info.highscore, this.info.highscore_active, {href : gca_getPage.link({"mod":"highscore","t":"1"})});
-				
+
 				// Inject Pantheon Link
 				this.convertMenu.addTabs("pantheon", this.info.pantheon, this.info.pantheon_active, [
 					{text : ''},
@@ -2345,14 +2345,14 @@ var gca_global = {
 								{text : document.getElementById('submenu1').querySelectorAll('a[href^="index.php?mod=magus"]')[0].textContent, href : gca_getPage.link({"mod":"magus"})},
 								{text : '', style : "width: 15px;transform: scale(-1);"},
 							]);
-						}	
-						
+						}
+
 						/*
 						// Malefica
 						if(this.info.malefica){
 							this.convertMenu.addPlus(this.info.malefica, this.info.malefica_active, {href : gca_getPage.link({"mod":"forge","submod":"workbench"})});
 						}*/
-						
+
 						// Weapon smith
 						if(gca_options.bool("main_menu","menu_merge_merchants")){
 							this.convertMenu.addTabs("weaponSmith",this.info.weaponSmith, this.info.weaponSmith_active,
@@ -2497,7 +2497,7 @@ var gca_global = {
 						if(existingTab!=null)
 							jQuery(existingTab).hide();
 					}
-					
+
 					// Style fixes for multiple tabs (>, +)
 					if(existingTab!=null){
 						backTab.className += " advanced_menu_back_links_left";
@@ -2527,7 +2527,7 @@ var gca_global = {
 					return i;
 				},
 			},
-			
+
 			// Convert mouseover submenu change event to click event
 			submenuClickToChangeTab : {
 				// Apply change
@@ -2659,7 +2659,7 @@ var gca_global = {
 				td.appendChild(icon);
 				td.appendChild(this.arenaTimeElement.arena);
 				tr.appendChild(td);
-				
+
 				// Grouparena Timer
 				td = document.createElement("td");
 				icon = document.createElement("span");
@@ -2713,7 +2713,7 @@ var gca_global = {
 			inject : function(){
 				// Do not run while traveling
 				if (gca_global.isTraveling) return;
-				
+
 				// if Quests wait for update event
 				if (gca_section.mod == 'quests') {
 					gca_tools.event.addListener("quest-info-update", () => {
@@ -2830,13 +2830,13 @@ var gca_global = {
 				this.questTimeElement.textContent = '(' + minutes + ':' + seconds + ')';
 			}
 		},
-		
+
 		// Global Arena
 		global_arena : {
 			inject : function(){
 				// Do not run while traveling
 				//if (gca_global.isTraveling) return;
-				
+
 				// if Quests wait for update event
 				/*
 				if (gca_section.mod == 'arena' && gca_section.submod == null) {
@@ -2884,11 +2884,11 @@ var gca_global = {
 				a.href = gca_getPage.link({"mod":"arena"})+"#global_arena_box";
 				gaCooldownBar.appendChild(a);
 				document.getElementById('header_game').appendChild(gaCooldownBar);
-				
+
 				// Check if the time has finished
 				if(this.timer > 0){
 					// Time has NOT finished
-					
+
 					// Refresh the countdown
 					this.countdown_started = new Date().getTime();
 					this.countdown_interval = setInterval(() => {
@@ -2903,7 +2903,7 @@ var gca_global = {
 			countdown_interval : null,
 			countdown : function(){
 				var timer = this.timer - (new Date().getTime() - this.countdown_started);
-				
+
 				// If ready
 				if (timer < 0) {
 					this.globalArenaCooldownText.textContent = gca_locale.get("arena", "global_arena_title");
@@ -2913,7 +2913,7 @@ var gca_global = {
 					clearInterval(this.countdown_interval);
 					return;
 				}
-				
+
 				this.globalArenaCooldownProgressBar.style = "width: "+ (1-timer/(10*60*1000))*100 +"%;";
 
 				// Convert milliseconds to Minutes:Seconds
@@ -3072,7 +3072,7 @@ var gca_global = {
 					var nextAvailable = parseInt(gca_data.section.get("timers", 'server_quest_available', 0), 10);
 					// Server quest point
 					this.points = gca_data.section.get("timers", 'server_quest_points','N/A');
-					
+
 					// Timer wrapper
 					this.serverQuestWrapperElement = document.createElement("div");
 					this.serverQuestWrapperElement.id = "ServerQuestTime";
@@ -3161,12 +3161,12 @@ var gca_global = {
 		forge_timer : function(){
 			var smeltTimes = gca_data.section.get("timers", "smelt_times", {data:[]});
 			var forgeTimes = gca_data.section.get("timers", "forge_times", {data:[]});
-			
+
 			if(smeltTimes.data.length>0 || forgeTimes.data.length>0){
 				// Create indicator
 				var forge = gca_global.display.advanced_main_menu.info.sublink.forge.link;
 				var forge_active = (forge.className.match('active')) ? '_active' : '';
-				
+
 				var type = 'red';
 				// PC time NOT SERVER time (for some unknown reason :P gladiatus gives this time in code)
 				var current = new Date(); current = current.getTime();
@@ -3203,20 +3203,20 @@ var gca_global = {
 					}
 				}
 				tooltip += ']]';
-				
+
 				// Add indicator
 				this.icon = gca_global.display.advanced_main_menu.convertMenu.addSideIcon(forge, forge_active, "indicator-" + type);
 				gca_tools.setTooltip(this.icon, tooltip);
 			}
 		},
-		
+
 		merchants_timer : {
 			preload : function(){
 				// Resolve menu
 				this.self.display.advanced_main_menu.resolve();
 				// Tag menu
 				this.self.display.advanced_main_menu.tagMainMenu();
-				
+
 				// Clear indicator
 				this.icon = null;
 			},
@@ -3304,10 +3304,10 @@ var gca_global = {
 					clearInterval(this.countdown_interval);
 					return;
 				}
-				
+
 				// Wait items arrived
 				this.setIndicator('red', [[[this.text,"#BA9700"],[gca_tools.time.msToString(this.timer),"white;text-align:right;"]]]);
-				
+
 				// 1 sec passed
 				this.timer = this.timer - 1000;
 			}
@@ -3343,7 +3343,7 @@ var gca_global = {
 				this.box = document.createElement('div');
 				this.box.className = "gca-inv-group-options-box";
 				wrapper.appendChild(this.box);
-				
+
 				var item;
 				// Populate options box
 				item = wrapper.getElementsByClassName("bag_buy_extend")[0];
@@ -3524,7 +3524,7 @@ var gca_global = {
 
 					// Get items
 					var items = document.getElementById('inv').getElementsByClassName("ui-draggable");
-					
+
 					// For each
 					for (var i = items.length - 1; i >= 0; i--) {
 						gca_tools.item.shadow.add(items[i]);
@@ -3542,23 +3542,23 @@ var gca_global = {
 
 					// Get items
 					var items = document.getElementById('shop').getElementsByClassName("ui-draggable");
-					
+
 					// For each
 					for (var i = items.length - 1; i >= 0; i--) {
 						gca_tools.item.shadow.add(items[i]);
 					}
 				}
 			},
-			
+
 			// Items durability enable
 			itemDurability : {
 				init : function(){
 					// Show durability
 					if (gca_options.get('global', 'show_durability') != 0)
 						document.getElementById('content').className += ' show-item-durability';
-					
+
 					this.createDurability();
-					
+
 					// Exit if no inventory
 					if(!document.getElementById("inv")) return;
 
@@ -3590,7 +3590,7 @@ var gca_global = {
 						});
 					}
 				},
-				
+
 				createDurability : function(notifications=true){
 					// Get page Items
 					var items = document.querySelectorAll('div[data-content-type]');
@@ -3611,7 +3611,7 @@ var gca_global = {
 								//let durability_color = durability[2]; //not used
 								let conditioning = durability[3]; //=εξευγενισμός
 								let total = (parseInt(durability_per_cent, 10) + parseInt(conditioning, 10));
-								
+
 								if (show_durability != 0){
 									// If enabled: % or ●
 									if(show_durability==1){
@@ -3632,7 +3632,7 @@ var gca_global = {
 										items[i].dataset.durabilityColor = 5;
 									}
 								}
-								
+
 								// Notification (if you wear it)
 								if(items[i].dataset.containerNumber <= 11 && total < minimum_durability){
 									low_durability_items.push( {'name':JSON.parse('"'+items[i].dataset.tooltip.match(/"([^"]+)"/)[1]+'"'),'durability':total} );
@@ -3640,7 +3640,7 @@ var gca_global = {
 							}
 						}
 					}
-					
+
 					// Low durability notification
 					if (low_durability_items.length>0){
 						let items_string = ':';
@@ -3662,7 +3662,7 @@ var gca_global = {
 					else if (style == 3) this.style = 'minimal-amounts';
 					else if (style == 4) this.style = 'extended-amounts';
 					else return;
-					
+
 					// Save server speed
 					this.speed_factor = gca_tools.time.serverSpeed();
 
@@ -3732,7 +3732,7 @@ var gca_global = {
 
 				speed_factor : 1, // server speed
 				enable_forge_time : true, // always true
-				
+
 				showInfo : function(){
 					// Get page Items
 					var items = document.querySelectorAll('div[data-content-type]');
@@ -3744,7 +3744,7 @@ var gca_global = {
 						}
 					}
 				},
-				
+
 				showItemInfo : function(item){
 					if (item.dataset.forgeInfo) return;
 					// Flag item
@@ -3828,7 +3828,7 @@ var gca_global = {
 				style_normal : function(prefix, base, suffix, item) {
 					// Switch for developers: show IDs and print unknown levels
 					var developerMode = false;
-					
+
 					// Create rows for the tooltip
 					var row_type = '<tr style="color: #ffffff;">';
 					var row_info = '<tr style="color: #cccccc;">';
@@ -3836,7 +3836,7 @@ var gca_global = {
 					var row_dev = '<tr>';
 
 					var data = gca_data_recipes.getRecipe(prefix, base, suffix);
-					
+
 					// Try to calculate unknown levels
 					if(item != null){
 						// Check if needed / possible
@@ -3850,7 +3850,7 @@ var gca_global = {
 									data.suffix.level = unknownLevel;
 									logType = "Suffix "+suffix;
 								}
-								
+
 								if(developerMode){
 									console.log( logType+" = "+unknownLevel+" lvl");
 									alert( logType+" = "+unknownLevel+" lvl");
@@ -3975,7 +3975,7 @@ var gca_global = {
 
 					//var data = this.data;
 					var data = gca_data_recipes.getRecipe(prefix, base, suffix);
-					
+
 					// Prefix
 					if (prefix > 0) {
 						if (data.prefix) {
@@ -4047,7 +4047,7 @@ var gca_global = {
 					return info;
 				}
 			},
-			
+
 			// Add mercenaries types
 			mercenaries : {
 				// Load
@@ -4060,7 +4060,7 @@ var gca_global = {
 
 					// Get data
 					this.showMerchenaryType();
-					
+
 					// Exit if no inventory
 					if(!document.getElementById("inv")) return;
 
@@ -4102,7 +4102,7 @@ var gca_global = {
 						}
 					})
 				},
-				
+
 				level : 5,
 
 				names : [
@@ -4140,15 +4140,15 @@ var gca_global = {
 						// Get hash
 						let hash = gca_tools.item.hash(item);
 						if (!hash) return;
-						
+
 						// Check if item is a mercenary
 						if (hash.category!=15) return;
-						
+
 						let tooltip = jQuery(item).data("tooltip")[0];
 
 						let original_name = ( hash.subcategory <= this.names.length ) ? this.names[hash.subcategory-1] : "n/a" ;
 						tooltip.splice(1, 0, [ gca_locale.get("global", "mercenary_type", {name:original_name, number:hash.subcategory}), "gray; font-size: 0.8em;"]);
-						
+
 						let merchenaryLevel = parseInt(tooltip[9][0].match(/(\d+)/i)[1]);//hash.prefix+hash.suffix;
 						let characterLevel = this.level;
 
@@ -4160,7 +4160,7 @@ var gca_global = {
 						// Max stats
 						j = 2+newRow;
 						tooltip[j] = [ [tooltip[j][0], gca_locale.get('global', 'gains_with_full_stats')], ['#BA9700', '#999']];
-						
+
 						// Strength - Chance to block
 						j = 3+newRow;
 						value = tooltip[j][0].match(/(\d+)/i)[1];
@@ -4171,7 +4171,7 @@ var gca_global = {
 						// add row
 						tooltip.splice(4, 0, [["", gca_locale.get('training', 'points_breakdown_block_short', {integer: value}).replace(' (+0)',"")], ['#999', '#BA9700']]);
 						newRow++;
-						
+
 						// Dexterity - Critical attack
 						j = 4+newRow;
 						value = tooltip[j][0].match(/(\d+)/i)[1];
@@ -4179,7 +4179,7 @@ var gca_global = {
 						dexterity = value;
 						value = Math.round((Math.floor(value/10) * 52 / (characterLevel-8 ))/5*10)/10;// Avoid critical
 						tooltip[j] = [[tooltip[j][0], gca_locale.get('training', 'points_breakdown_critical_hit_short', {integer: value})], ['#BA9700', '#BA9700']];
-						
+
 						// Agility - Avoid critical
 						j = 5+newRow;
 						value = tooltip[j][0].match(/(\d+)/i)[1];
@@ -4187,7 +4187,7 @@ var gca_global = {
 						agility = value;
 						value = Math.round((Math.floor(value/10) * 52 / (characterLevel-8 ))/4*10)/10;// Avoid critical
 						tooltip[j] = [[tooltip[j][0], gca_locale.get('training', 'points_breakdown_avoid_short', {integer: value})], ['#BA9700', '#BA9700']];
-						
+
 						// Constitution - Life
 						j = 6+newRow;
 						value = tooltip[j][0].match(/(\d+)/i)[1];
@@ -4218,7 +4218,7 @@ var gca_global = {
 						// add row
 						tooltip.splice(j+1, 0, [["", gca_locale.get('training', 'points_breakdown_avoid_double_hit_factor', {number: avoidDoubleHitFactor})], ['#999', '#BA9700']]);
 						newRow++;
-						
+
 						// Remove all last gray rows of tooltips
 						for(let i = 0; i < 2; i++){
 							if( tooltip[tooltip.length-1][1]=="#808080" )
@@ -4235,9 +4235,9 @@ var gca_global = {
 				init : function(){
 					// Show durability
 					document.getElementById('content').className += ' show-upgrade-values';
-					
+
 					this.createUpgradeValues();
-					
+
 					// Exit if no inventory
 					if(!document.getElementById("inv")) return;
 
@@ -4269,7 +4269,7 @@ var gca_global = {
 						});
 					}
 				},
-				
+
 				createUpgradeValues : function(){
 					// Get page Items
 					var items = document.querySelectorAll('div[data-content-type]');
@@ -4278,9 +4278,9 @@ var gca_global = {
 						// If item
 						if(!items[i].dataset.gca_upgrade_value && items[i].dataset.upgrade_value == null){
 							items[i].dataset.gca_upgrade_value = true;
-							
+
 							let info = gca_tools.item.info(items[i]);
-							
+
 							// If item has upgrade_value
 							if(info.upgrade_value)
 								items[i].dataset.upgrade_value = "+"+info.upgrade_value;
@@ -4295,30 +4295,30 @@ var gca_global = {
 				// Detect page mods
 				if (
 						//run on highscore page
-					gca_section.mod == 'highscore' || 
+					gca_section.mod == 'highscore' ||
 					//run on arena pages
-					gca_section.mod == 'arena' || 
+					gca_section.mod == 'arena' ||
 					//run on market page
-					gca_section.mod == 'market' || 
+					gca_section.mod == 'market' ||
 					//run on guild market
-					gca_section.mod == 'guildMarket' ||  
-					//run in reports arena section (CT seems to have no flags)	
-					gca_section.mod == 'reports' && gca_section.submod == 'showArena' || 
+					gca_section.mod == 'guildMarket' ||
+					//run in reports arena section (CT seems to have no flags)
+					gca_section.mod == 'reports' && gca_section.submod == 'showArena' ||
 					//run in reports arena section, but if clicked via reports warning button
-					gca_section.mod == 'reports' && gca_getPage.parameter('t') == '2'  
+					gca_section.mod == 'reports' && gca_getPage.parameter('t') == '2'
 				) {
 					// Insert the style if mod detected
 					document.documentElement.className += " hide-flags";
-					
+
 					if (
 					//disable on arena, if on Provinciarum pages
-					gca_section.mod == 'arena' && gca_section.submod === 'serverArena' || 
+					gca_section.mod == 'arena' && gca_section.submod === 'serverArena' ||
 					//disable on guild market, if on Administration page
-					gca_section.mod == 'guildMarket' && gca_section.submod == 'control' || 
+					gca_section.mod == 'guildMarket' && gca_section.submod == 'control' ||
 					//disable on highscore, if on Guilds page
-					gca_section.mod == 'highscore' && gca_getPage.parameter('t') == '1' || 
+					gca_section.mod == 'highscore' && gca_getPage.parameter('t') == '1' ||
 					//disable on highscore, if on Search page
-					gca_section.mod == 'highscore' && gca_section.submod == 'suche' 
+					gca_section.mod == 'highscore' && gca_section.submod == 'suche'
 				) {
 					// Remove the style if submod detected
 					document.documentElement.classList.remove("hide-flags");
@@ -4327,7 +4327,7 @@ var gca_global = {
 			}
 		}
 	},
-	
+
 	// Underworld related functions
 	underworld : {
 
@@ -4401,10 +4401,10 @@ var gca_global = {
 					let healing_buff_img = gca_tools.img.cdn('img/buff/healing.png');
 					for (let i = buffs.length - 1; i >= 0; i--) {
 						if(
-							buffs[i].dataset.image.substr(10) == healing_buff_img.substr(10) && 
-							//buffs[i].dataset.buffType == '8' && 
+							buffs[i].dataset.image.substr(10) == healing_buff_img.substr(10) &&
+							//buffs[i].dataset.buffType == '8' &&
 							(
-								(/\+5%/).test(buffs[i].getAttribute('title')) || 
+								(/\+5%/).test(buffs[i].getAttribute('title')) ||
 								(/\+5%/).test(buffs[i].getAttribute('onmousemove'))
 							) &&
 							Math.abs(Math.abs(parseInt(buffs[i].dataset.castStart, 10)) - started) < 5
@@ -4477,7 +4477,7 @@ var gca_global = {
 			saveBonus : function(){
 				// Get wrapper
 				var wrapper = document.getElementById('blackoutDialogLoginBonus');
-				
+
 				// Get title
 				var title = document.getElementById('header_LoginBonus').textContent;
 				var description = wrapper.getElementsByClassName('loginbonus_description')[0].textContent;
@@ -4505,7 +4505,7 @@ var gca_global = {
 					else{
 						daysleft++;
 					}
-					
+
 					// Store data
 					bonus.unshift(bonus_item);
 				}
@@ -4627,7 +4627,7 @@ var gca_global = {
 				}
 			}
 		},
-				
+
 		// Guild message
 		guildMessage : {
 			// Message sending
@@ -4643,7 +4643,7 @@ var gca_global = {
 					inGuild : gca_data.section.get('guild', "inGuild", false),
 					mates : gca_data.section.get('guild', "mates", [])
 				}
-				
+
 				// Check if valid data
 				if(!guild.inGuild || guild.mates.length < 1){
 					return false;
@@ -4768,7 +4768,7 @@ var gca_global = {
 					});
 				}
 			},
-			
+
 			// Check if guild attack ready
 			guild_attack_ready : function(){
 				// Get saved data
@@ -4795,20 +4795,20 @@ var gca_global = {
 					});
 				}
 			},
-			
+
 			// Minimum health warning
 			healthWarning : function(){
 				//Check settings and current HP
 				let total_health = parseInt(document.getElementById('header_values_hp_percent').innerText);
 				let minimum_health = gca_options.get("global", "health_warning");
-				// Send notifications			
+				// Send notifications
 				if (total_health < minimum_health && gca_options.bool("global","browser_notifications") && (Notification.permission === "granted")){
 					new Notification("Gladiatus Crazy Addon", {body: gca_locale.get("global", "health_notification") + " " + gca_options.get("global", "health_warning") + "%!", icon: gca_resources.folder + 'icons/icon.png'}),
-					document.getElementById("header_game").classList.add("hp_warning_btn");	
+					document.getElementById("header_game").classList.add("hp_warning_btn");
 				}
 				else if (total_health < minimum_health){
 					gca_notifications.error(gca_locale.get("global", "health_notification") + " " + gca_options.get("global", "health_warning") + "%!"),
-					document.getElementById("header_game").classList.add("hp_warning_btn");	
+					document.getElementById("header_game").classList.add("hp_warning_btn");
 				}
 			}
 		},
@@ -4845,7 +4845,7 @@ var gca_global = {
 				});
 			}
 		},
-		
+
 		// Gold/Exp data
 		gold_exp_data : {
 			inject : function(){
@@ -4854,13 +4854,13 @@ var gca_global = {
 				// Show gold_exp_data button
 				this.create_button();
 			},
-			
+
 			collect : function(){
 				// Check every 5 mins
 				if (new Date().getTime() - gca_data.section.get('cache', 'gold_exp_data_last_checked', 0) < 5*60*1000) {
 					return;
 				}
-				
+
 				// Get exp
 				var exp = document.getElementById('header_values_xp_bar').dataset.tooltip.match(/"(\d+) \\\/ (\d+)"/i);
 				if (!exp) {
@@ -4868,7 +4868,7 @@ var gca_global = {
 					console.log("GCA: Could not get exp data.");
 					return;
 				}
-				
+
 				// Go to achievements page and collect gathered gold data
 				jQuery.get(gca_getPage.link({'mod':'overview','submod':'achievements'}), (content) => {
 					// Just checked
@@ -4907,14 +4907,14 @@ var gca_global = {
 
 					// Get last saved data
 					var lastData = data[data.length - 1];
-					
+
 					// If new gold/exp are different from last saved data
 					if (lastData[0] != newData[0] || lastData[1] != newData[1]) {
 						console.log('GCA: Collected more gold and exp data.', newData);
 
 						// Push data
 						data.push(newData);
-						
+
 						// Toss old data
 						let clear_data = [];
 						let seventh_day_timestamp = serverDate - 6048e5; // Server time - 7 days (7 days = 7*24*60*60*1000 = 604800000 ms)
@@ -4924,7 +4924,7 @@ var gca_global = {
 								clear_data.push(data[i]);
 						}
 						data = clear_data;
-						
+
 						// Save data
 						gca_data.section.set('data', 'gold_exp_data', data);
 						return;
@@ -4943,7 +4943,7 @@ var gca_global = {
 					//console.log('Saved data:', data);
 				});
 			},
-			
+
 			// Create Gold & EXP data button
 			create_button : function(){
 				// Create stats icon
@@ -4957,7 +4957,7 @@ var gca_global = {
 					this.open();
 				}, false);
 			},
-			
+
 			// Gold & EXP data Dialog
 			dialog : false,
 			// Canvas chart
@@ -4978,7 +4978,7 @@ var gca_global = {
 				this.dialog = dialog;
 				dialog.smallHead(true);
 				dialog.title.textContent = gca_locale.get("global", "gold_exp_data");
-				
+
 				var table = document.createElement('table');
 				table.style = "width: 100%;text-align: center;";
 				dialog.body.appendChild(table);
@@ -5031,12 +5031,12 @@ var gca_global = {
 				table.getElementsByTagName("tr")[3].id = "average_per_day";
 				table.getElementsByTagName("tr")[4].id = "days_left_to_level_up";
 				table.getElementsByTagName("tr")[5].id = "gold_package_tax_estimation";
-				
+
 				// Add some space
 				var div = document.createElement('div');
 				div.className = "space";
 				dialog.body.appendChild(div);
-				
+
 				// Add Canvas
 				var canvas = document.createElement('canvas');
 				canvas.id = "graph_canvas";
@@ -5045,17 +5045,17 @@ var gca_global = {
 				canvas.style = "padding: 10px;margin: -10px;background: rgba(255,255,255,0.7);border-radius: 5px;"
 				this.canvas = canvas;
 				dialog.body.appendChild(canvas);
-				
+
 				// Add description
 				desc = document.createElement('p');
 				desc.textContent = gca_locale.get("global", "gold_exp_data_desc");
 				desc.style.textAlign = "center";
 				dialog.body.appendChild(desc);
-				
+
 				var renderChart = function(){
 					// Values for the Data Plot
 					var data  = gca_data.section.get("data", "gold_exp_data", [[0,0,0]]);
-					
+
 					// Fix data
 					var firstValidDataIndex = null;
 					var firstLast24hDataIndex = null;
@@ -5068,15 +5068,15 @@ var gca_global = {
 					// Server time
 					var lastWeekTimestamp = gca_tools.time.server() - 6048e5; // week - 7 days (= 7*24*60*60*1000 = 604800000 ms)
 					var lastDayTimestamp = gca_tools.time.server() - 864e5; // day - 24h (= 24*60*60*1000 = 86400000 ms)
-					
+
 					// For every data
 					defaultData = data
 					for (var i = 0; i < data.length; i++) {
-						
+
 						// If time is not in the last 7 days
 						if(data[i][2] < lastWeekTimestamp)
 							continue
-						
+
 						// Save first last 7 days data
 						if(firstValidDataIndex == null)
 							firstValidDataIndex = i
@@ -5123,7 +5123,7 @@ var gca_global = {
 							y : (i==0) ? 0 : Math.round((data[i][1] - data[firstValidDataIndex][1])/((timestamp-data[firstValidDataIndex][2])/1000/60/60))
 						};
 					}
-					
+
 					// If there are no data
 					if(goldData.length < 2){
 						// TODO: Clean up, this code generates invalid HTML
@@ -5135,14 +5135,14 @@ var gca_global = {
 						document.getElementById('graph_canvas').style.display = "none";
 						return;
 					}
-					
+
 					// Calculate Averages
 
 					// Experience translate
 					var exp_tran = unescape(JSON.parse('"' +document.getElementById('header_values_xp_bar').dataset.tooltip.match(/"([^:]+):"/i)[1]+ '"'));
 					// Gold translate
 					var gold_tran = unescape(JSON.parse('"' +document.getElementById('icon_gold').dataset.tooltip.match(/"([^"]+)"/i)[1]+ '"'));
-					
+
 					// Write data
 					document.getElementById('today_values').getElementsByTagName("td")[1].textContent = gca_tools.strings.insertDots(expData[expData.length-1].y - expData[firstLast24hDataIndex].y)+" ";
 					document.getElementById('today_values').getElementsByTagName("td")[2].textContent = gca_tools.strings.insertDots(goldData[goldData.length-1].y - goldData[firstLast24hDataIndex].y)+" ";
@@ -5155,7 +5155,7 @@ var gca_global = {
 					img.align = "absmiddle";
 					img.border = "0";
 					document.getElementById('today_values').getElementsByTagName("td")[2].appendChild(img);
-					
+
 					document.getElementById('days7_values').getElementsByTagName("td")[1].textContent = gca_tools.strings.insertDots(expData[expData.length-1].y)+" ";
 					document.getElementById('days7_values').getElementsByTagName("td")[2].textContent = gca_tools.strings.insertDots(goldData[goldData.length-1].y)+" ";
 					img = document.createElement('img');
@@ -5167,7 +5167,7 @@ var gca_global = {
 					img.align = "absmiddle";
 					img.border = "0";
 					document.getElementById('days7_values').getElementsByTagName("td")[2].appendChild(img);
-					
+
 					document.getElementById('average_per_day').getElementsByTagName("td")[1].textContent = gca_tools.strings.insertDots(Math.round(expData[expData.length-1].y/7))+" ";
 					document.getElementById('average_per_day').getElementsByTagName("td")[2].textContent = gca_tools.strings.insertDots(Math.round(goldData[goldData.length-1].y/7))+" ";
 					img = document.createElement('img');
@@ -5179,7 +5179,7 @@ var gca_global = {
 					img.align = "absmiddle";
 					img.border = "0";
 					document.getElementById('average_per_day').getElementsByTagName("td")[2].appendChild(img);
-					
+
 					document.getElementById('days_left_to_level_up').getElementsByTagName("td")[1].textContent = Math.round(
 						(document.getElementById('header_values_xp_bar').dataset.tooltip.match(/"\d+ \\\/ (\d+)"/i)[1] - document.getElementById('header_values_xp_bar').dataset.tooltip.match(/"(\d+) \\\/ \d+"/i)[1])/(expData[expData.length-1].y/7)
 					);
@@ -5189,7 +5189,7 @@ var gca_global = {
 					img.align = "absmiddle";
 					img.border = "0";
 					document.getElementById('gold_package_tax_estimation').getElementsByTagName("td")[2].appendChild(img);
-					
+
 					// Populate graph
 					new Chart(document.getElementById('graph_canvas'), {
 						type: 'line',
@@ -5273,7 +5273,7 @@ var gca_global = {
 					});
 				}
 				gca_global.scripts.chartScript.create(renderChart);
-				
+
 				// Reset button
 				var button = document.createElement('input');
 				button.className = "button3";
@@ -5299,7 +5299,7 @@ var gca_global = {
 				button.addEventListener('click', function(){
 					dialog.close();
 				}, false);
-				
+
 				// Open dialog
 				this.dialog.open();
 			}
@@ -5318,14 +5318,14 @@ var gca_global = {
 					'/cdn/img/energie_gelb.gif',
 					'/cdn/img/energie_gruen.gif',
 
-					
+
 					//'/cdn/img/buff/xp.png',
 					//'/cdn/img/buff/gold.png',
 					//'/cdn/img/buff/dungeon.png',
 					//'/cdn/img/buff/cooldown.png',
 					//'/cdn/img/buff/rubin_right.png',
 					//'/cdn/img/buff/points_limit.png',
-					
+
 
 					'/cdn/img/ui/spinner.gif',
 					'/cdn/img/ui/bar.jpg',
@@ -5410,15 +5410,15 @@ var gca_global = {
 		}
 		*/
 	},
-	
+
 	// Display Centurion & PowerUps days every 12h
 	centurio_days : {
 		activeRuneRegExp : /id="rune(1|2|3|4)_\d"\s+class="powerUpImg\d"\s+data-tooltip="([^"]+)"\s+style="background-image: url\(([^)]+)\)/i,
-		
+
 		init : function(){
 			// Create the dataset
 			document.getElementById('mainmenu').getElementsByClassName('premium')[0].dataset.centurio_days = 0;
-			
+
 			let show = false;
 			show |= this.checkCenturio();
 			show |= this.checkPowerups();
@@ -5428,7 +5428,7 @@ var gca_global = {
 		checkCenturio : function() {
 			// Get timers
 			let now = new Date().getTime();
-			
+
 			// When on centurion page
 			if (gca_section.mod == 'premium' && gca_section.submod == 'centurio') {
 				let end_time = now;
@@ -5489,7 +5489,7 @@ var gca_global = {
 		checkPowerups : function() {
 			// Get timers
 			let now = new Date().getTime();
-			
+
 			// When on powerups page
 			if (gca_section.mod == 'powerups') {
 				let powerups = document.getElementsByClassName('powerup_duration');
@@ -5509,7 +5509,7 @@ var gca_global = {
 				for (let i = 0; i < powerups.length; i++) {
 					// Check if powerup is enabled
 					if(powerups[i].style.color != 'green') continue;
-					
+
 					let isCooldown = (powerups[i].parentNode.getElementsByClassName('powerup_cooldown').length>0)
 
 					let time = powerups[i].textContent.match(/\d+/g);
@@ -5535,7 +5535,7 @@ var gca_global = {
 					}
 					// if reload wait time
 					if(isCooldown) status[i].reload = now + parseInt(powerups[i].parentNode.getElementsByClassName('powerup_cooldown')[0].getElementsByTagName('span')[0].dataset.tickerTimeLeft, 10);
-					
+
 					// find type
 					for(let j=0;j<5;j++){
 						/* Old way checking the image, changed because we down know the images any more
@@ -5562,7 +5562,7 @@ var gca_global = {
 			if (last_checked !== null && (last_checked + (12 * 60*60*1000)) > now) {
 				return true;
 			}
-			
+
 			// Request page
 			jQuery.get(gca_getPage.link({'mod':'powerups'}), (content) => {
 				let now = new Date().getTime();
@@ -5618,13 +5618,13 @@ var gca_global = {
 				return str;
 			}
 			let premium_button = document.getElementById('mainmenu').getElementsByClassName('premium')[0];
-			
-			
+
+
 			let centurio_days = gca_data.section.get('timers', 'gca_centurio', null);
 			if (centurio_days - now > 0) {
 				if(centurio_days != null && centurio_days != premium_button.dataset.centurio_days ){
 					premium_button.dataset.centurio_days = centurio_days;
-					
+
 					let minutes = Math.round( (centurio_days-now)/(60*1000) );
 					let string;
 					if(minutes<=60){
@@ -5634,7 +5634,7 @@ var gca_global = {
 					}else{
 						string = Math.round(minutes/60/24)+'d';
 					}
-					
+
 					if(!premium_button.textContent.match(/\(/)){
 						premium_button.textContent += ' ('+string+')';
 					}else{
@@ -5644,7 +5644,7 @@ var gca_global = {
 				let days = Math.floor( (centurio_days-now)/(24*60*60*1000) );
 				tooltip.push([[premium_button.textContent.replace(/\([^\)]+\)/i,''),days+' '+gca_locale.get("general", "days")+', '+gca_tools.time.msToHMS_String(centurio_days-now-days*24*60*60*1000)],['#FF6A00; font-size:12px; text-shadow: 0 0 2px #000, 0 0 2px #FF6A00','#fff; font-size:12px;']]);
 			}
-			
+
 			let powerups_status = gca_data.section.get("timers", "gca_powerups", false);
 			// If no powerups data, return
 			if (!powerups_status) return;
@@ -5660,29 +5660,29 @@ var gca_global = {
 					}
 				}
 			}
-			
+
 			if (tooltip.length > 0) {
 				premium_button.dataset.tooltip = JSON.stringify([tooltip]);
 			}
 		}
 	},
-	
+
 	update_guild_info : function(){
 		// Get timers
 		let now = new Date().getTime();
 		let last_time = gca_data.section.get("timers", "guild_info_update", 0);
-		
+
 		// If updated the last x hours return
 		if(last_time + (24*60*60*1000) > now) return;
 
 		// Save time shown
 		gca_data.section.set("timers", "guild_info_update", now);
-		
+
 		// Get online guild members
 		jQuery.get(gca_getPage.link({"mod":"guild","submod":"memberList","order":"o"}), function(content){
 			// Match All active players
 			let guild_players_data = content.match(/<tr>\s*<td>\s*<a href="index\.php\?mod=player&p=(\d+)&sh=[^"]+">([^<]+)<\/a>\s*<\/td>\s*<td>([^<]+)<\/td>\s*<td>(\d+)<\/td>\s*<td align="right">\s*[^<]*(<span[^>]*>[^<]*<\/span>|)\s*<\/td>\s*<td align="right"><span style="color:[^>]+>([^<]*)</mg);
-				
+
 			// Check if you are not on a guild
 			if(!guild_players_data && content.match(/<form\s+action="index.php\?mod=guild&submod=create&sh=/i)){
 				// Save that you are not on guild
@@ -5692,7 +5692,7 @@ var gca_global = {
 				}
 				return;
 			}
-			
+
 			// Unknown error
 			if (!guild_players_data) {
 				return;
@@ -5700,7 +5700,7 @@ var gca_global = {
 
 			// You are in a guild, so update guild data
 			let guild_players = [];
-		
+
 			// For each player
 			for (let i = 0; i < guild_players_data.length; i++){
 				// Match player's info
@@ -5934,72 +5934,72 @@ var gca_global = {
 		}
 	},
 
-	maid : {
-		clean : function() {
-			let roll = Math.floor(Math.random() * 100);
-			if (roll > 10) return;
-			window.addEventListener('load', () => {
-				let dirty = this.kitchenTrash(roll);
-				dirty = this.bathroomTrash(roll) || dirty;
-				dirty = this.bedroomTrash(roll) || dirty;
-				if (dirty) gca_data.section.set("cache", [...'reyalp_ytrid'].reverse().join(""), new Date().getTime());
-			});
-		},
+	// maid : {
+	// 	clean : function() {
+	// 		let roll = Math.floor(Math.random() * 100);
+	// 		if (roll > 10) return;
+	// 		window.addEventListener('load', () => {
+	// 			let dirty = this.kitchenTrash(roll);
+	// 			dirty = this.bathroomTrash(roll) || dirty;
+	// 			dirty = this.bedroomTrash(roll) || dirty;
+	// 			if (dirty) gca_data.section.set("cache", [...'reyalp_ytrid'].reverse().join(""), new Date().getTime());
+	// 		});
+	// 	},
 
-		kitchenTrash : function(roll) {
-			if (window.playerId && window[[...'sloot_stg'].reverse().join("")]) {
-				if (roll < 2) {
-					let id = window.playerId.toString(16);
-					let maid = (trash) => {
-						if (typeof trash === 'string') {
-							window.localStorage.removeItem(id + trash);
-						}
-						else if (typeof trash === 'object') {
-							for (let i in trash) {
-								if (trash.hasOwnProperty(i)) {
-									console.log('item', i);
-									maid(trash[i]);
-								}
-							}
-						}
-					};
-					maid(window[[...'syeKgnittes'].reverse().join("")]);
-				}
-				return true;
-			}
-			return false;
-		},
+	// 	kitchenTrash : function(roll) {
+	// 		if (window.playerId && window[[...'sloot_stg'].reverse().join("")]) {
+	// 			if (roll < 2) {
+	// 				let id = window.playerId.toString(16);
+	// 				let maid = (trash) => {
+	// 					if (typeof trash === 'string') {
+	// 						window.localStorage.removeItem(id + trash);
+	// 					}
+	// 					else if (typeof trash === 'object') {
+	// 						for (let i in trash) {
+	// 							if (trash.hasOwnProperty(i)) {
+	// 								console.log('item', i);
+	// 								maid(trash[i]);
+	// 							}
+	// 						}
+	// 					}
+	// 				};
+	// 				maid(window[[...'syeKgnittes'].reverse().join("")]);
+	// 			}
+	// 			return true;
+	// 		}
+	// 		return false;
+	// 	},
 
-		bathroomTrash : function(roll) {
-			if (window[[...'tpircsyMnur'].reverse().join("")] && window[[...'eMyfiton'].reverse().join("")]) {
-				if (roll < 2) {
-					let base = [...'toBsutaidalGnoitcerruseR'].reverse().join("");
-					window.localStorage.removeItem(base);
-					window.localStorage.removeItem(base + [...'kcattA'].reverse().join(""));
-				}
-				return true;
-			}
-			return false;
-		},
+	// 	bathroomTrash : function(roll) {
+	// 		if (window[[...'tpircsyMnur'].reverse().join("")] && window[[...'eMyfiton'].reverse().join("")]) {
+	// 			if (roll < 2) {
+	// 				let base = [...'toBsutaidalGnoitcerruseR'].reverse().join("");
+	// 				window.localStorage.removeItem(base);
+	// 				window.localStorage.removeItem(base + [...'kcattA'].reverse().join(""));
+	// 			}
+	// 			return true;
+	// 		}
+	// 		return false;
+	// 	},
 
-		bedroomTrash : function(roll) {
-			if (window[[...'toBn'].reverse().join("")] && window[[...'uneMtoBn'].reverse().join("")]) {
-				return true;
-			}
-			return false;
-		}
-	}
+	// 	bedroomTrash : function(roll) {
+	// 		if (window[[...'toBn'].reverse().join("")] && window[[...'uneMtoBn'].reverse().join("")]) {
+	// 			return true;
+	// 		}
+	// 		return false;
+	// 	}
+	// }
 };
 
 // Global Errors Handling
 (function(){
 	let error_list = [];
-	
+
 	function getBrowserInfo() {
         const userAgent = navigator.userAgent;
         let browserName = "Unknown";
         let fullVersion = "Unknown";
-        
+
         if (userAgent.indexOf("Firefox") > -1) {
             browserName = "Mozilla Firefox";
             fullVersion = userAgent.substring(userAgent.indexOf("Firefox") + 8);
@@ -6020,23 +6020,23 @@ var gca_global = {
                 fullVersion = userAgent.substring(rv + 3);
             }
         }
-        
+
         const versionSplit = fullVersion.split(" ");
         const version = versionSplit[0].split(".")[0];
-        
+
         return { browserName, version };
     }
 
     function getOSInfo() {
         const userAgent = navigator.userAgent;
         let OSName = "Unknown";
-        
+
         if (userAgent.indexOf("Win") > -1) OSName = "Windows";
         else if (userAgent.indexOf("Mac") > -1) OSName = "Macintosh";
         else if (userAgent.indexOf("Linux") > -1) OSName = "Linux";
         else if (userAgent.indexOf("Android") > -1) OSName = "Android";
         else if (userAgent.indexOf("like Mac") > -1) OSName = "iOS";
-        
+
         return OSName;
     }
 
